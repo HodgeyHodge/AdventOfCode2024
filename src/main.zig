@@ -12,6 +12,7 @@ const day9 = @import("solutions/9.zig");
 const day10 = @import("solutions/10.zig");
 const day11 = @import("solutions/11.zig");
 const day12 = @import("solutions/12.zig");
+const day13 = @import("solutions/13.zig");
 
 const Solver = fn (input: []const u8) anyerror!u64;
 
@@ -127,6 +128,10 @@ pub fn main() !void {
         Run{ .day = 12, .part = 2, .solver = day12.solve(.{ .discount = true }), .expected = 368, .input = "AAAAAA\nAAABBA\nAAABBA\nABBAAA\nABBAAA\nAAAAAA" },
         Run{ .day = 12, .part = 2, .solver = day12.solve(.{ .discount = true }), .expected = 1206, .input = "RRRRIICCFF\nRRRRIICCCF\nVVRRRCCFFF\nVVRCCCJFFF\nVVVVCJJCFE\nVVIVCCJJEE\nVVIIICJJEE\nMIIIIIJJEE\nMIIISIJEEE\nMMMISSJEEE" },
         Run{ .day = 12, .part = 2, .solver = day12.solve(.{ .discount = true }), .expected = 921636, .input = @embedFile("inputs/12.txt") },
+
+        Run{ .day = 13, .part = 1, .solver = day13.solve_1, .expected = 480, .input = "Button A: X+94, Y+34\nButton B: X+22, Y+67\nPrize: X=8400, Y=5400\n\nButton A: X+26, Y+66\nButton B: X+67, Y+21\nPrize: X=12748, Y=12176\n\nButton A: X+17, Y+86\nButton B: X+84, Y+37\nPrize: X=7870, Y=6450\n\nButton A: X+69, Y+23\nButton B: X+27, Y+71\nPrize: X=18641, Y=10279" },
+        Run{ .day = 13, .part = 1, .solver = day13.solve_1, .expected = 26599, .input = @embedFile("inputs/13.txt") },
+        Run{ .day = 13, .part = 2, .solver = day13.solve_2, .expected = 106228669504887, .input = @embedFile("inputs/13.txt") },
     };
 
     if (std.os.argv.len == 2) {
