@@ -45,20 +45,24 @@ fn pretty_input_preview(input: []const u8) [25]u8 {
 
 fn solve(run: Run) !void {
     const pretty_input = pretty_input_preview(run.input);
+
+    if (run.expected == null) {
+        std.debug.print("Day {d} part {d}: running for input {s}\n", .{ run.day, run.part, pretty_input });
+    } else {
+        std.debug.print("Day {d}, part {d}: testing input {s}\nExpecting {d}...", .{ run.day, run.part, pretty_input, run.expected.? });
+    }
+
     var t = try std.time.Timer.start();
     const output = try run.solver(run.input);
     const time_elapsed = t.read();
 
     if (run.expected == null) {
-        std.debug.print("Day {d} part {d}: running for input {s}\n", .{ run.day, run.part, pretty_input });
         std.debug.print("Result:\n    {d}\n", .{output});
-        std.debug.print("Time elapsed: {}\n\n", .{std.fmt.fmtDuration(time_elapsed)});
     } else {
-        std.debug.print("Day {d}, part {d}: testing input {s}\nExpecting {d}...", .{ run.day, run.part, pretty_input, run.expected.? });
-        try std.testing.expectEqual(run.expected, try run.solver(run.input));
+        try std.testing.expectEqual(run.expected, output);
         std.debug.print(" OK!\n", .{});
-        std.debug.print("Time elapsed: {}\n\n", .{std.fmt.fmtDuration(time_elapsed)});
     }
+    std.debug.print("Time elapsed: {}\n\n", .{std.fmt.fmtDuration(time_elapsed)});
 }
 
 pub fn main() !void {
