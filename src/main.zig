@@ -14,6 +14,8 @@ const day11 = @import("solutions/11.zig");
 const day12 = @import("solutions/12.zig");
 const day13 = @import("solutions/13.zig");
 const day14 = @import("solutions/14.zig");
+const day15a = @import("solutions/15a.zig");
+const day15b = @import("solutions/15b.zig");
 
 const Solver = fn (input: []const u8) anyerror!u64;
 
@@ -141,6 +143,14 @@ pub fn main() !void {
         Run{ .day = 14, .part = 1, .solver = day14.solve_1(.{ .width = 11, .height = 7 }), .expected = 12, .input = "p=0,4 v=3,-3\np=6,3 v=-1,-3\np=10,3 v=-1,2\np=2,0 v=2,-1\np=0,0 v=1,3\np=3,0 v=-2,-2\np=7,6 v=-1,-3\np=3,0 v=-1,-2\np=9,3 v=2,3\np=7,3 v=-1,2\np=2,4 v=2,-3\np=9,5 v=-3,-3" },
         Run{ .day = 14, .part = 1, .solver = day14.solve_1(.{ .width = 101, .height = 103 }), .expected = 215476074, .input = @embedFile("inputs/14.txt") },
         Run{ .day = 14, .part = 2, .solver = day14.solve_2(.{ .width = 101, .height = 103, .frame = 6285 }), .expected = 0, .input = @embedFile("inputs/14.txt") },
+
+        Run{ .day = 15, .part = 1, .solver = day15a.solve, .expected = 2028, .input = "########\n#..O.O.#\n##@.O..#\n#...O..#\n#.#.O..#\n#...O..#\n#......#\n########\n\n<^^>>>vv<v>>v<<" },
+        Run{ .day = 15, .part = 1, .solver = day15a.solve, .expected = 10092, .input = @embedFile("inputs/15_test.txt") },
+        Run{ .day = 15, .part = 1, .solver = day15a.solve, .expected = 1486930, .input = @embedFile("inputs/15.txt") },
+
+        Run{ .day = 15, .part = 2, .solver = day15b.solve, .expected = 9021, .input = @embedFile("inputs/15_test.txt") },
+        Run{ .day = 15, .part = 2, .solver = day15b.solve, .expected = 1492011, .input = @embedFile("inputs/15.txt") },
+
     };
 
     if (std.os.argv.len == 2) {
