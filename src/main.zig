@@ -16,6 +16,7 @@ const day13 = @import("solutions/13.zig");
 const day14 = @import("solutions/14.zig");
 const day15a = @import("solutions/15a.zig");
 const day15b = @import("solutions/15b.zig");
+const day16 = @import("solutions/16.zig");
 
 const Solver = fn (input: []const u8) anyerror!u64;
 
@@ -151,6 +152,9 @@ pub fn main() !void {
         Run{ .day = 15, .part = 2, .solver = day15b.solve, .expected = 9021, .input = @embedFile("inputs/15_test.txt") },
         Run{ .day = 15, .part = 2, .solver = day15b.solve, .expected = 1492011, .input = @embedFile("inputs/15.txt") },
 
+        Run{ .day = 16, .part = 1, .solver = day16.solve, .expected = 7036, .input = @embedFile("inputs/16_test_1.txt") },
+        Run{ .day = 16, .part = 1, .solver = day16.solve, .expected = 11048, .input = @embedFile("inputs/16_test_2.txt") },
+        Run{ .day = 16, .part = 1, .solver = day16.solve, .expected = 127520, .input = @embedFile("inputs/16.txt") },
     };
 
     if (std.os.argv.len == 2) {
